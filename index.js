@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
+//Route through places.js
+app.use("/places", require("./controllers/places"));
+
 //homepage route
 app.get("/", (req, res) => {
   res.send("Hello World");
