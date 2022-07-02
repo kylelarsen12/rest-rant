@@ -3,17 +3,21 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
+//Define view engine
+app.set("view engine", "jsx");
+app.engine("jsx", require("express-react-views").createEngine());
+
 //Route through places.js
 app.use("/places", require("./controllers/places"));
 
 //homepage route
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.render("home");
 });
 
 //404 route
 app.get("*", (req, res) => {
-  res.status(404).send("<h1>Whoops, 404 page not found</h1>");
+  res.render("error404");
 });
 
 app.listen(process.env.PORT);
