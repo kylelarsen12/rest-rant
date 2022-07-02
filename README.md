@@ -17,8 +17,9 @@ REST-rant is an app where users can review restaurants
 | GET    | \*                       | 404 page                                        |
 
 Data needed for places
--[] Name
--[] city
--[] state
--[] cuisines
--[] picture
+
+- [] Name
+- [] city
+- [] state
+- [] cuisines
+- [] picture
