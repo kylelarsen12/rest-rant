@@ -1,25 +1,9 @@
 //Create/export router
-const React = require("react");
 const router = require("express").Router();
+const places = require("../models/places.js");
 
 //First route
 router.get("/", (req, res) => {
-  let places = [
-    {
-      name: "H-Thai-ML",
-      city: "Seattle",
-      state: "WA",
-      cuisines: "Thai, Pan-Asian",
-      pic: "/images/thaifood.jpg",
-    },
-    {
-      name: "Coding Cat Cafe",
-      city: "Phoenix",
-      state: "AZ",
-      cuisines: "Coffee, Bakery",
-      pic: "/images/coffee.jpg",
-    },
-  ];
   res.render("places/index", { places });
 });
 
@@ -28,8 +12,20 @@ router.get("/new", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
-  res.send("POST request back to places page");
+  //provide default image if none specified
+  if (!req.body.pic) {
+    req.body.pic = "/public/images/squat.jpg";
+  }
+  //default city i am very funny
+  if (!req.body.city) {
+    req.body.city = "Yourmomshouse";
+  }
+  //default state haha
+  if (!req.body.state) {
+    req.body.state = "lmao";
+  }
+  places.push(req.body);
+  res.redirect("/places");
 });
 
 module.exports = router;
