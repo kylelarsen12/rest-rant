@@ -1,4 +1,5 @@
 //Create/export router
+const React = require("react");
 const router = require("express").Router();
 
 //First route
@@ -24,6 +25,10 @@ router.get("/", (req, res) => {
 
 router.get("/new", (req, res) => {
   res.render("places/new");
+});
+
+router.post("/", (req, res) => {
+  res.send("POST request back to places page");
 });
 
 module.exports = router;
