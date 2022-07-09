@@ -19,14 +19,14 @@ router.get("/:id", (req, res) => {
   } else if (!places[id]) {
     res.render("error404");
   } else {
-    res.render("places/show", { place: places[id] });
+    res.render("places/show", { place: places[id], id });
   }
 });
 
 router.post("/", (req, res) => {
   //provide default image if none specified
   if (!req.body.pic) {
-    req.body.pic = "/public/images/squat.jpg";
+    req.body.pic = "images/squat.jpg";
   }
   //default city i am very funny
   if (!req.body.city) {
@@ -38,6 +38,21 @@ router.post("/", (req, res) => {
   }
   places.push(req.body);
   res.redirect("/places");
+});
+
+//DELETE
+//prettier-ignore
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    places.splice(id, 1);
+    //prettier-ignore
+    res.status(303).redirect('/places');
+  }
 });
 
 module.exports = router;

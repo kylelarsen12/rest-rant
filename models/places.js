@@ -5,6 +5,7 @@ module.exports = [
     state: "WA",
     cuisines: "Thai, Pan-Asian",
     pic: "/images/thaifood.jpg",
+    id: 0,
   },
   {
     name: "Coding Cat Cafe",
@@ -12,5 +13,6 @@ module.exports = [
     state: "AZ",
     cuisines: "Coffee, Bakery",
     pic: "/images/coffee.jpg",
+    id: 1,
   },
 ];
