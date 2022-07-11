@@ -13,13 +13,39 @@ router.get("/new", (req, res) => {
 
 //EDIT
 router.get("/:id/edit", (req, res) => {
-  let id = req.params.id;
+  let id = Number(req.params.id);
   if (isNaN(id)) {
     res.render("error404");
   } else if (!places[id]) {
     res.render("error404");
   } else {
     res.render("places/edit", { place: places[id] });
+  }
+});
+
+//PUT
+router.put("/places/:id", (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    //Check for req.body having valid data
+    if (!req.body.pic) {
+      req.body.pic = "/images/squat.jpg";
+    }
+
+    if (!req.body.city) {
+      req.body.city = "Yourmomshouse";
+    }
+
+    if (!req.body.state) {
+      req.body.state = "lmao";
+    }
+
+    places[id] = req.body;
+    res.redirect(`/places/${id}`);
   }
 });
 
