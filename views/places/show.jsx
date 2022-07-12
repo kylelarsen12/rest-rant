@@ -14,7 +14,10 @@ function show(data) {
 
         <div>
           <h2>Description</h2>
-          <p>no description yet</p>
+          <p>
+            Located in {data.place.city}, {data.place.state}
+          </p>
+          <p>Serving {data.place.cuisines}</p>
         </div>
 
         <div>

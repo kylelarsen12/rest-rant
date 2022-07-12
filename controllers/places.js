@@ -19,16 +19,29 @@ router.get("/:id/edit", (req, res) => {
   } else if (!places[id]) {
     res.render("error404");
   } else {
-    res.render("places/edit", { place: places[id] });
+    res.render("places/edit", { place: places[id], id });
   }
 });
 
-//PUT
-router.put("/places/:id", (req, res) => {
+//SHOW
+router.get("/:id", (req, res) => {
   let id = Number(req.params.id);
   if (isNaN(id)) {
     res.render("error404");
   } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    res.render("places/show", { place: places[id], id });
+  }
+});
+
+//PUT
+router.put("/:id", (req, res) => {
+  console.log(req.body);
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+    res.render("error404");
+  } else if (!places[req.params.id]) {
     res.render("error404");
   } else {
     //Check for req.body having valid data
@@ -46,18 +59,6 @@ router.put("/places/:id", (req, res) => {
 
     places[id] = req.body;
     res.redirect(`/places/${id}`);
-  }
-});
-
-//SHOW
-router.get("/:id", (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.render("error404");
-  } else if (!places[id]) {
-    res.render("error404");
-  } else {
-    res.render("places/show", { place: places[id], id });
   }
 });
 

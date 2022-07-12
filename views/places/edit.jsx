@@ -13,6 +13,7 @@ function editForm(data) {
               <label htmlFor="name">Place Name</label>
               <input
                 className="form-control"
+                type="text"
                 id="name"
                 name="name"
                 value={data.place.name}
@@ -26,6 +27,7 @@ function editForm(data) {
                 className="form-control"
                 id="pic"
                 name="pic"
+                type="text"
                 value={data.place.pic}
               ></input>
             </div>
@@ -36,6 +38,7 @@ function editForm(data) {
                 className="form-control"
                 id="city"
                 name="city"
+                type="text"
                 value={data.place.city}
               ></input>
             </div>
@@ -45,6 +48,7 @@ function editForm(data) {
                 className="form-control"
                 id="state"
                 name="state"
+                type="text"
                 value={data.place.state}
               ></input>
             </div>
@@ -55,6 +59,7 @@ function editForm(data) {
               className="form-control"
               id="cuisines"
               name="cuisines"
+              type="text"
               value={data.place.cuisines}
               required
             ></input>
@@ -62,7 +67,7 @@ function editForm(data) {
           <input
             className="btn btn-primary"
             type="submit"
-            value="Add Place"
+            value="Submit Changes"
           ></input>
         </form>
       </main>
