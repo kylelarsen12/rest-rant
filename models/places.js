@@ -1,4 +1,7 @@
-module.exports = [
+/*
+SHOULDN'T NEED THIS ANYMORE: just commenting it out for now as a safety net
+
+(module.exports = [
   {
     name: "H-Thai-ML",
     city: "Seattle",
@@ -16,3 +19,20 @@ module.exports = [
     id: 1,
   },
 ];
+*/
+
+//Dependencies
+const mongoose = require("mongoose");
+
+//Schema
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  pic: String,
+  cusisines: { type: String, required: true },
+  city: { type: String, default: "West Nowhere" },
+  state: { type: String, default: "Hicksville" },
+  founded: Number,
+});
+
+//Export schema
+module.exports = mongoose.model("Place", placeSchema);

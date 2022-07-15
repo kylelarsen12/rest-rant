@@ -2,11 +2,12 @@
 const router = require("express").Router();
 const places = require("../models/places.js");
 
-//First route
+//Index route
 router.get("/", (req, res) => {
   res.render("places/index", { places });
 });
 
+//NEW
 router.get("/new", (req, res) => {
   res.render("places/new");
 });
@@ -37,11 +38,10 @@ router.get("/:id", (req, res) => {
 
 //PUT
 router.put("/:id", (req, res) => {
-  console.log(req.body);
   let id = Number(req.params.id);
   if (isNaN(id)) {
     res.render("error404");
-  } else if (!places[req.params.id]) {
+  } else if (!places[id]) {
     res.render("error404");
   } else {
     //Check for req.body having valid data
@@ -62,6 +62,7 @@ router.put("/:id", (req, res) => {
   }
 });
 
+//CREATE
 router.post("/", (req, res) => {
   //provide default image if none specified
   if (!req.body.pic) {
