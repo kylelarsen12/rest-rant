@@ -2,97 +2,41 @@
 const router = require("express").Router();
 const places = require("../models/places.js");
 
-//Index route
+//GET Index route
 router.get("/", (req, res) => {
-  res.render("places/index", { places });
+  res.send("GET /places stub");
+});
+
+//POST index
+router.post("/", (req, res) => {
+  res.send("POST /places stub");
 });
 
 //NEW
 router.get("/new", (req, res) => {
-  res.render("places/new");
+  res.send("GET /places/new stub");
 });
 
-//EDIT
-router.get("/:id/edit", (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.render("error404");
-  } else if (!places[id]) {
-    res.render("error404");
-  } else {
-    res.render("places/edit", { place: places[id], id });
-  }
-});
-
-//SHOW
+//GET /:id
 router.get("/:id", (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.render("error404");
-  } else if (!places[id]) {
-    res.render("error404");
-  } else {
-    res.render("places/show", { place: places[id], id });
-  }
+  res.send("GET /places/:id stub");
 });
 
-//PUT
+//PUT /:id
 router.put("/:id", (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.render("error404");
-  } else if (!places[id]) {
-    res.render("error404");
-  } else {
-    //Check for req.body having valid data
-    if (!req.body.pic) {
-      req.body.pic = "/images/squat.jpg";
-    }
-
-    if (!req.body.city) {
-      req.body.city = "Yourmomshouse";
-    }
-
-    if (!req.body.state) {
-      req.body.state = "lmao";
-    }
-
-    places[id] = req.body;
-    res.redirect(`/places/${id}`);
-  }
-});
-
-//CREATE
-router.post("/", (req, res) => {
-  //provide default image if none specified
-  if (!req.body.pic) {
-    req.body.pic = "images/squat.jpg";
-  }
-  //default city i am very funny
-  if (!req.body.city) {
-    req.body.city = "Yourmomshouse";
-  }
-  //default state haha
-  if (!req.body.state) {
-    req.body.state = "lmao";
-  }
-  places.push(req.body);
-  res.redirect("/places");
+  res.send("PUT /places/:id stub");
 });
 
 //DELETE
 //prettier-ignore
 router.delete('/:id', (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-    res.render("error404");
-  } else if (!places[id]) {
-    res.render("error404");
-  } else {
-    places.splice(id, 1);
-    //prettier-ignore
-    res.status(303).redirect('/places');
+  res.send("DELETE /places/:id stub")
   }
+);
+
+//EDIT
+router.get("/:id/edit", (req, res) => {
+  res.send("GET /:id/edit form stub");
 });
 
 module.exports = router;
