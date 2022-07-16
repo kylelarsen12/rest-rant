@@ -43,3 +43,8 @@ main {
   margin-left: 20px;
   background-color: white;
 }
+
+.homepage-img img {
+  height: 30%;
+  width: 30%;
+}

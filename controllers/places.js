@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//POST index
+//POST index (update places after edit form)
 router.post("/", (req, res) => {
   db.Place.create(req.body)
     .then(() => res.redirect("/places"))
@@ -24,14 +24,21 @@ router.post("/", (req, res) => {
     });
 });
 
-//NEW
+//NEW place
 router.get("/new", (req, res) => {
   res.render("places/new");
 });
 
-//GET /:id
+//SHOW place by id
 router.get("/:id", (req, res) => {
-  res.send("GET /places/:id stub");
+  db.Place.findById(req.params.id)
+    .then((place) => {
+      res.render("places/show", { place });
+    })
+    .catch((err) => {
+      console.log("ERROR", err);
+      res.render("error404");
+    });
 });
 
 //PUT /:id

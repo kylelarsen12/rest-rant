@@ -7,8 +7,8 @@ function home() {
     <Def>
       <main>
         <h1>REST-Rant</h1>
-        <div>
-          <img src="/images/tacos.jpg" alt="tacos" />
+        <div className="homepage-img">
+          <img src="/images/tacos.jpg" alt="tacos" style={{ height: "30%" }} />
           <div>
             Photo by{" "}
             <a href="https://unsplash.com/es/@briewilly?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
