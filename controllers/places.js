@@ -1,20 +1,32 @@
 //Create/export router
 const router = require("express").Router();
-const places = require("../models/places.js");
+const db = require("../models");
 
 //GET Index route
 router.get("/", (req, res) => {
-  res.send("GET /places stub");
+  db.Place.find()
+    .then((places) => {
+      res.render("places/index", { places });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
 });
 
 //POST index
 router.post("/", (req, res) => {
-  res.send("POST /places stub");
+  db.Place.create(req.body)
+    .then(() => res.redirect("/places"))
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
 });
 
 //NEW
 router.get("/new", (req, res) => {
-  res.send("GET /places/new stub");
+  res.render("places/new");
 });
 
 //GET /:id
@@ -37,6 +49,21 @@ router.delete('/:id', (req, res) => {
 //EDIT
 router.get("/:id/edit", (req, res) => {
   res.send("GET /:id/edit form stub");
+});
+
+//GET rants
+router.get("/:id/rant", (req, res) => {
+  res.send("GET /places/:id/rant stub");
+});
+
+//POST rants
+router.post("/:id/rant", (req, res) => {
+  res.send("POST /places/:id/rant stub");
+});
+
+//DELETE rants
+router.delete("/:id/rant/:rantID", (req, res) => {
+  res.send("DELETE /places/:id/rant/:rantID stub");
 });
 
 module.exports = router;
