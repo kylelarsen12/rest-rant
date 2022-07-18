@@ -33,5 +33,10 @@ const placeSchema = new mongoose.Schema({
   founded: Number,
 });
 
+//Helper methods
+placeSchema.methods.showEstablished = function () {
+  return `${this.name} has been serving somewhat edible food since ${this.founded} in ${this.city}, ${this.state}`;
+};
+
 //Export schema
 module.exports = mongoose.model("Place", placeSchema);

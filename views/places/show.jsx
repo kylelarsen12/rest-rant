@@ -7,6 +7,9 @@ function show(data) {
       <main>
         <h1>{data.place.name}</h1>
         <img src={data.place.pic} />
+        <h3>
+          Located in {data.place.city}, {data.place.state}
+        </h3>
         <div>
           <h2>Rating</h2>
           <p>Not rated</p>
@@ -14,10 +17,8 @@ function show(data) {
 
         <div>
           <h2>Description</h2>
-          <p>
-            Located in {data.place.city}, {data.place.state}
-          </p>
-          <p>Serving {data.place.cuisines}</p>
+          <h3>{data.place.showEstablished()}</h3>
+          <h4>Serving {data.place.cuisines}</h4>
         </div>
 
         <div>
