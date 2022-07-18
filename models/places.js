@@ -30,7 +30,14 @@ const placeSchema = new mongoose.Schema({
   cuisines: { type: String, required: true },
   city: { type: String, default: "West Nowhere" },
   state: { type: String, default: "Hicksville" },
-  founded: Number,
+  founded: {
+    type: Number,
+    min: [1673, "Man ur old"],
+    max: [
+      new Date().getFullYear(),
+      "Yo no time travelling, this year or earlier",
+    ],
+  },
 });
 
 //Helper methods

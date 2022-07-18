@@ -16,15 +16,6 @@ router.get("/", (req, res) => {
 
 //POST index (update places after edit form)
 router.post("/", (req, res) => {
-  if (!req.body.city) {
-    req.body.city = "yourmomshouse";
-  }
-  if (!req.body.state) {
-    req.body.state = "lmao";
-  }
-  if (!req.body.pic) {
-    req.body.pic = undefined;
-  }
   db.Place.create(req.body)
     .then(() => res.redirect("/places"))
     .catch((err) => {
