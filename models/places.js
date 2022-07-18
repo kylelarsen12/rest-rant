@@ -26,7 +26,7 @@ const mongoose = require("mongoose");
 //Schema
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  pic: { type: String, default: "/images/squat.jpg" },
+  pic: { type: String, default: "images/squat.jpg" },
   cuisines: { type: String, required: true },
   city: { type: String, default: "West Nowhere" },
   state: { type: String, default: "Hicksville" },
