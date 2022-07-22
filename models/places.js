@@ -38,6 +38,7 @@ const placeSchema = new mongoose.Schema({
       "Yo no time travelling, this year or earlier",
     ],
   },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 //Helper methods

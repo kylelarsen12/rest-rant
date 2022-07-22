@@ -17,10 +17,10 @@ router.get("/", (req, res) => {
 //POST index (update places after edit form)
 router.post("/", (req, res) => {
   if (!req.body.city) {
-    req.body.city = "yourmomshouse";
+    req.body.city = undefined;
   }
   if (!req.body.state) {
-    req.body.state = "lmao";
+    req.body.state = undefined;
   }
   if (!req.body.pic) {
     req.body.pic = undefined;
