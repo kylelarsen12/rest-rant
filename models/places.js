@@ -37,6 +37,7 @@ const placeSchema = new mongoose.Schema({
       new Date().getFullYear(),
       "Yo no time travelling, this year or earlier",
     ],
+    default: 2022,
   },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });

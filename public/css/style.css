@@ -4,8 +4,8 @@ h1 {
 }
 
 img {
-  width: 40%;
-  height: 50%;
+  width: 20%;
+  height: 25%;
 }
 
 nav {
@@ -47,4 +47,9 @@ main {
 .homepage-img img {
   height: 30%;
   width: 30%;
+}
+
+.index-img {
+  height: 35%;
+  width: 40%;
 }
