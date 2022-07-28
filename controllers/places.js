@@ -124,8 +124,17 @@ router.post("/:id/comment", (req, res) => {
 });
 
 //DELETE rants
-router.delete("/:id/rant/:rantID", (req, res) => {
-  res.send("DELETE /places/:id/rant/:rantID stub");
+router.delete("/:id/comments/:commentID", (req, res) => {
+  db.Place.findById(req.params.id)
+    .then((comment) => {
+      db.Comment.findByIdAndDelete(req.params.commentID).then(() => {
+        res.redirect(`/places/${req.params.id}`);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
 });
 
 module.exports = router;
