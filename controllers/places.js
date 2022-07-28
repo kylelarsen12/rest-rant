@@ -43,6 +43,9 @@ router.get("/new", (req, res) => {
 
 //SHOW place by id
 router.get("/:id", (req, res) => {
+  if (!req.body.pic) {
+    req.body.pic = undefined;
+  }
   db.Place.findById(req.params.id)
     .populate("comments")
     .then((place) => {
@@ -93,10 +96,12 @@ router.post("/:id/comment", (req, res) => {
           });
         })
         .catch((err) => {
+          console.log(err);
           res.render("error404");
         });
     })
     .catch((err) => {
+      console.log(err);
       res.render("error404");
     });
 });
