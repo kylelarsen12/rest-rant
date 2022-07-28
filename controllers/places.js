@@ -60,7 +60,14 @@ router.get("/:id", (req, res) => {
 
 //PUT /:id
 router.put("/:id", (req, res) => {
-  res.send("PUT /places/:id stub");
+  db.Place.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.redirect(`/places/${req.params.id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
 });
 
 //DELETE
@@ -69,13 +76,20 @@ router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id).then((place) => {
     res.redirect("/places")
   }).catch((err) => {console.log(err)
-  res.redirect("error404")})
+  res.render("error404")})
   }
 );
 
-//EDIT
+//GET edit place
 router.get("/:id/edit", (req, res) => {
-  res.send("GET /:id/edit form stub");
+  db.Place.findById(req.params.id)
+    .then((place) => {
+      res.render("places/edit", { place });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render("error404");
+    });
 });
 
 //GET rants
