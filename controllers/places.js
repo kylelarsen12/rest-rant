@@ -66,7 +66,10 @@ router.put("/:id", (req, res) => {
 //DELETE
 //prettier-ignore
 router.delete('/:id', (req, res) => {
-  res.send("DELETE /places/:id stub")
+  db.Place.findByIdAndDelete(req.params.id).then((place) => {
+    res.redirect("/places")
+  }).catch((err) => {console.log(err)
+  res.redirect("error404")})
   }
 );
 

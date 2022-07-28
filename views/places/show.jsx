@@ -19,7 +19,6 @@ function show(data) {
     comments = data.place.comments.map((c) => {
       return (
         <div className="border">
-          <h1>Comments</h1>
           <h2 className="rant"> {c.rant ? "Rant! D:" : "Rave! :D"}</h2>
           <h4>{c.content}</h4>
           <h3>
@@ -49,7 +48,10 @@ function show(data) {
           <h4>Serving {data.place.cuisines}</h4>
         </div>
 
-        <div>{comments}</div>
+        <div>
+          <h2>Comments</h2>
+          {comments}
+        </div>
         <a
           href={`/places/${data.place.id}/comment`}
           className="btn btn-primary btn-block"
